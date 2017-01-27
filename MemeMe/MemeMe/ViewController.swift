@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var textFieldTop: UITextField!
+    @IBOutlet var textFieldBottom: UITextField!
     @IBOutlet var cameraButton: UIBarButtonItem!
     
     override func viewDidLoad() {
