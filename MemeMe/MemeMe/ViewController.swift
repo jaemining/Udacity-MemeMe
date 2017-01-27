@@ -16,12 +16,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
     }
 
-    @IBAction func pickAnImage(_ sender: Any) {
+    @IBAction func pickAnImageFromPhotoLibrary(_ sender: Any) {
         let pickerController = UIImagePickerController()
         
         pickerController.sourceType = .photoLibrary
         pickerController.allowsEditing = true
+        pickerController.delegate = self
         
+        present(pickerController, animated: true, completion: nil)
+    }
+
+    @IBAction func pickAnImageFromCamera(_ sender: Any) {
+        let pickerController = UIImagePickerController()
+        
+        pickerController.sourceType = .camera
+        pickerController.allowsEditing = true
         pickerController.delegate = self
         
         present(pickerController, animated: true, completion: nil)
