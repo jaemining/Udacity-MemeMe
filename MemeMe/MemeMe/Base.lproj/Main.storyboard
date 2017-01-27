@@ -25,7 +25,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f48-uw-tSZ">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Camera" id="JYv-se-QgM">
+                                    <barButtonItem systemItem="camera" id="JYv-se-QgM">
                                         <connections>
                                             <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="hoF-SK-QKr"/>
                                         </connections>
@@ -83,12 +83,24 @@
                             <constraint firstItem="8Q3-bL-8CO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="qSP-dD-K4z"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="KhL-HF-fck"/>
+                    <navigationItem key="navigationItem" id="KhL-HF-fck">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="TMI-hD-8ly">
+                            <connections>
+                                <action selector="share:" destination="BYZ-38-t0r" id="mmU-I6-vFz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="pCl-RG-huu">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="UUr-PO-xYJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cameraButton" destination="JYv-se-QgM" id="itG-7P-zJI"/>
                         <outlet property="imageView" destination="3m7-Mt-ffO" id="0zz-qd-6Y5"/>
                         <outlet property="textFieldBottom" destination="bAe-S0-Z6e" id="C7j-Wk-cHJ"/>
                         <outlet property="textFieldTop" destination="8Q3-bL-8CO" id="oGu-Ov-6MW"/>
+                        <outlet property="toolBar" destination="f48-uw-tSZ" id="doA-BN-opi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -15,6 +15,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet var textFieldBottom: UITextField!
     @IBOutlet var cameraButton: UIBarButtonItem!
 
+    @IBOutlet var toolBar: UIToolbar!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -67,6 +69,44 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let image = info[UIImagePickerControllerEditedImage] as? UIImage
             self.imageView.image = image
         }
+    }
+
+    @IBAction func share(_ sender: Any) {
+        let memedImage = generateMemedImage()
+
+        let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+
+        activityViewController.completionWithItemsHandler = { activity, success, items, error in
+            if(success == true && error == nil) {
+                self.save(memedImage: memedImage)
+            }
+        }
+
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+
+    @IBAction func cancel(_ sender: Any) {
+    }
+
+    func save(memedImage: UIImage) {
+        let meme = Meme(textFielTop: textFieldTop.text!, textFieldBottom: textFieldBottom.text!, originalImage: imageView.image!, memedImage: memedImage)
+    }
+
+    func generateMemedImage() -> UIImage {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        toolBar.isHidden = true
+
+        UIGraphicsBeginImageContext(self.view.bounds.size)
+        view.drawHierarchy(in: self.view.bounds, afterScreenUpdates: true)
+
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        toolBar.isHidden = false
+
+        return memedImage
     }
 }
 
