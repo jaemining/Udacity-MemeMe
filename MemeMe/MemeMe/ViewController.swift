@@ -14,17 +14,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet var textFieldTop: UITextField!
     @IBOutlet var textFieldBottom: UITextField!
     @IBOutlet var cameraButton: UIBarButtonItem!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         textFieldTop.textAlignment = .center
         textFieldBottom.textAlignment = .center
 
         textFieldTop.delegate = self
+        textFieldTop.tag = 1
         textFieldBottom.delegate = self
+        textFieldBottom.tag = 2
 
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
     }
 
     @IBAction func pickAnImageFromPhotoLibrary(_ sender: Any) {
@@ -46,7 +53,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         present(pickerController, animated: true, completion: nil)
     }
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: false) { () in
             let alert = UIAlertController(title:"", message: "이미지 선택이 취소되었습니다", preferredStyle: .alert)
@@ -54,7 +61,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.present(alert, animated: false)
         }
     }
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: false) { () in
             let image = info[UIImagePickerControllerEditedImage] as? UIImage
@@ -70,15 +77,44 @@ extension ViewController: UITextFieldDelegate {
         if (textField.placeholder != nil) {
             textField.placeholder = ""
         }
+
+        if (textField.tag == 2) { // BOTTOM textField가 선택된 경우
+            subscribeToKeyboardNotifications()
+        }
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+
+    // 키보드
+    func keyboardWillShow(_ notification:Notification) {
+        view.frame.origin.y = 0 - getKeyboardHeight(notification)
+    }
+
+    func keyboardWillHide(_ notification:Notification) {
+        view.frame.origin.y = 0
+    }
+
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
+    }
+
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+    }
+
+    func unsubscribeFromKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+    }
 }
 
-extension UITextField{
+extension UITextField {
     @IBInspectable var placeHolderColor: UIColor? {
         get {
             return self.placeHolderColor
