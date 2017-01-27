@@ -88,7 +88,7 @@ extension ViewController: UITextFieldDelegate {
         return true
     }
 
-    // 키보드
+    /***** Keyboard Adjustments *****/
     func keyboardWillShow(_ notification:Notification) {
         view.frame.origin.y = 0 - getKeyboardHeight(notification)
     }
