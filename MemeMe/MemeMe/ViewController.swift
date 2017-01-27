@@ -18,6 +18,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textFieldTop.textAlignment = .center
+        textFieldBottom.textAlignment = .center
+
+        textFieldTop.delegate = self
+        textFieldBottom.delegate = self
+
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
 
@@ -55,6 +61,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.imageView.image = image
         }
     }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("텍스트 필드의 편집이 시작되었습니다")
+
+        if (textField.placeholder != nil) {
+            textField.placeholder = ""
+        }
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
 
 extension UITextField{
     @IBInspectable var placeHolderColor: UIColor? {
