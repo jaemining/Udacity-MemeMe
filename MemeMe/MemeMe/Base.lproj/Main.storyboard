@@ -49,6 +49,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="JYv-se-QgM" id="itG-7P-zJI"/>
                         <outlet property="imageView" destination="3m7-Mt-ffO" id="0zz-qd-6Y5"/>
                     </connections>
                 </viewController>

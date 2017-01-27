@@ -11,9 +11,12 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var cameraButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
 
     @IBAction func pickAnImageFromPhotoLibrary(_ sender: Any) {
