@@ -41,17 +41,27 @@
                                 <rect key="frame" x="16" y="64" width="343" height="559"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" placeholder="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Q3-bL-8CO">
-                                <rect key="frame" x="130.5" y="84" width="114" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Q3-bL-8CO">
+                                <rect key="frame" x="16" y="84" width="343" height="36"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" placeholder="BOTTOM" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bAe-S0-Z6e">
-                                <rect key="frame" x="130.5" y="573" width="114" height="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bAe-S0-Z6e">
+                                <rect key="frame" x="16" y="567" width="343" height="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -59,12 +69,14 @@
                             <constraint firstItem="f48-uw-tSZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="06C-sB-VGf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3m7-Mt-ffO" secondAttribute="trailing" id="0J2-FD-4bb"/>
                             <constraint firstAttribute="trailing" secondItem="f48-uw-tSZ" secondAttribute="trailing" id="0ou-ZU-obt"/>
+                            <constraint firstItem="8Q3-bL-8CO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Bbb-oM-UMx"/>
                             <constraint firstItem="f48-uw-tSZ" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="CXr-5j-A6w"/>
                             <constraint firstItem="f48-uw-tSZ" firstAttribute="top" secondItem="bAe-S0-Z6e" secondAttribute="bottom" constant="20" id="Fek-iO-p3j"/>
                             <constraint firstItem="f48-uw-tSZ" firstAttribute="top" secondItem="bAe-S0-Z6e" secondAttribute="bottom" constant="20" id="Nsa-Z1-euk"/>
                             <constraint firstItem="8Q3-bL-8CO" firstAttribute="leading" secondItem="bAe-S0-Z6e" secondAttribute="leading" id="Pga-Ry-kF3"/>
                             <constraint firstItem="8Q3-bL-8CO" firstAttribute="trailing" secondItem="bAe-S0-Z6e" secondAttribute="trailing" id="ROH-gt-1xc"/>
                             <constraint firstItem="3m7-Mt-ffO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="TTL-jT-FTA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8Q3-bL-8CO" secondAttribute="trailing" id="Y9P-nb-k54"/>
                             <constraint firstItem="3m7-Mt-ffO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="j2d-KP-Y82"/>
                             <constraint firstItem="f48-uw-tSZ" firstAttribute="top" secondItem="3m7-Mt-ffO" secondAttribute="bottom" id="m5f-Dr-OTU"/>
                             <constraint firstItem="8Q3-bL-8CO" firstAttribute="centerX" secondItem="3m7-Mt-ffO" secondAttribute="centerX" id="nSM-J7-Z6B"/>
