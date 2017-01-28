@@ -101,6 +101,7 @@
                     <connections>
                         <outlet property="cameraButton" destination="JYv-se-QgM" id="itG-7P-zJI"/>
                         <outlet property="imageView" destination="3m7-Mt-ffO" id="0zz-qd-6Y5"/>
+                        <outlet property="shareButton" destination="TMI-hD-8ly" id="sql-b7-dtX"/>
                         <outlet property="textFieldBottom" destination="bAe-S0-Z6e" id="C7j-Wk-cHJ"/>
                         <outlet property="textFieldTop" destination="8Q3-bL-8CO" id="oGu-Ov-6MW"/>
                         <outlet property="toolBar" destination="f48-uw-tSZ" id="doA-BN-opi"/>
@@ -184,39 +185,47 @@
             </objects>
             <point key="canvasLocation" x="-829.60000000000002" y="-155.17241379310346"/>
         </scene>
-        <!--Image View Controller-->
-        <scene sceneID="qwO-mH-YJ8">
+        <!--Title-->
+        <scene sceneID="Xy1-vP-W18">
             <objects>
-                <viewController storyboardIdentifier="newView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UmP-Ev-5LS" customClass="ImageViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageViewController" id="wtG-w3-Ncx" customClass="ImageViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="n9r-kb-dNe"/>
-                        <viewControllerLayoutGuide type="bottom" id="Mob-az-hys"/>
+                        <viewControllerLayoutGuide type="top" id="AtB-Gu-J85"/>
+                        <viewControllerLayoutGuide type="bottom" id="aud-pf-wRO"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="U9V-FW-TIY">
+                    <view key="view" contentMode="scaleToFill" id="43X-QX-JJN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q9d-No-6Sv">
-                                <rect key="frame" x="16" y="64" width="343" height="589"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFb-Qu-CCq">
+                                <rect key="frame" x="168.5" y="607" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="close:" destination="wtG-w3-Ncx" eventType="touchUpInside" id="T6T-fu-7Do"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2cA-Bf-ITU">
+                                <rect key="frame" x="16" y="64" width="343" height="422"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2cA-Bf-ITU" firstAttribute="leading" secondItem="43X-QX-JJN" secondAttribute="leadingMargin" id="AQW-6V-Yr3"/>
+                            <constraint firstItem="pFb-Qu-CCq" firstAttribute="centerX" secondItem="43X-QX-JJN" secondAttribute="centerX" id="EsX-5W-zkO"/>
+                            <constraint firstItem="aud-pf-wRO" firstAttribute="top" secondItem="pFb-Qu-CCq" secondAttribute="bottom" constant="30" id="H94-aE-G5T"/>
+                            <constraint firstItem="pFb-Qu-CCq" firstAttribute="top" secondItem="2cA-Bf-ITU" secondAttribute="bottom" constant="121" id="LLr-qD-vk5"/>
+                            <constraint firstItem="2cA-Bf-ITU" firstAttribute="top" secondItem="AtB-Gu-J85" secondAttribute="bottom" id="N97-L9-iMS"/>
+                            <constraint firstItem="2cA-Bf-ITU" firstAttribute="trailing" secondItem="43X-QX-JJN" secondAttribute="trailingMargin" id="XNJ-nH-lcH"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="qBP-Sh-aWj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="oZc-Ww-Rla">
-                            <connections>
-                                <action selector="cancel:" destination="UmP-Ev-5LS" id="qgb-0p-IFi"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="LtM-Ie-xEt"/>
                     <connections>
-                        <outlet property="imageView" destination="Q9d-No-6Sv" id="6Sa-nn-dUs"/>
+                        <outlet property="imageView" destination="2cA-Bf-ITU" id="uIY-qw-AHv"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zAR-7S-j55" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xgd-01-USd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1607.2" y="-623.83808095952031"/>
+            <point key="canvasLocation" x="3055.1999999999998" y="-469.1154422788606"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fVm-In-QNT">
@@ -349,22 +358,22 @@
             <point key="canvasLocation" x="-1780" y="629"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="uni-XR-X9e">
+        <scene sceneID="9c1-ro-LAh">
             <objects>
-                <navigationController storyboardIdentifier="ImageViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uC0-JU-TRi" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fXM-nb-tYJ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="usj-vi-ter">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fyg-vt-xdS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="UmP-Ev-5LS" kind="relationship" relationship="rootViewController" id="XsF-Lk-oCb"/>
+                        <segue destination="wtG-w3-Ncx" kind="relationship" relationship="rootViewController" id="i3i-K7-DpU"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rD7-ZY-DjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ee4-LE-7qa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668" y="-624.73763118440786"/>
+            <point key="canvasLocation" x="2116" y="-469.1154422788606"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -14,6 +14,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet var textFieldTop: UITextField!
     @IBOutlet var textFieldBottom: UITextField!
     @IBOutlet var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
 
     @IBOutlet var toolBar: UIToolbar!
 
@@ -28,12 +29,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textFieldBottom.delegate = self
         textFieldBottom.tag = 2
 
+        shareButton.isEnabled = false
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        unsubscribeFromKeyboardNotifications()
     }
 
     @IBAction func pickAnImageFromPhotoLibrary(_ sender: Any) {
@@ -67,7 +64,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: false) { () in
             let image = info[UIImagePickerControllerEditedImage] as? UIImage
-            self.imageView.image = image
+            
+            if (self.imageView.image != nil) {
+                self.textFieldTop.text = ""
+                self.textFieldTop.placeholder = "TOP"
+                
+                self.textFieldBottom.text = ""
+                self.textFieldBottom.placeholder = "BOTTOM"
+                
+                self.imageView.image = image
+                
+                self.shareButton.isEnabled = true
+            } else {
+                self.imageView.image = image
+                
+                self.shareButton.isEnabled = true
+            }
         }
     }
 
@@ -130,6 +142,7 @@ extension ViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        unsubscribeFromKeyboardNotifications()
         return true
     }
 
