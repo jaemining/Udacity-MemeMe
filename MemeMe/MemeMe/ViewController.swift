@@ -87,10 +87,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 
     func save(memedImage: UIImage) {
         let meme = Meme(textFielTop: textFieldTop.text!, textFieldBottom: textFieldBottom.text!, originalImage: imageView.image!, memedImage: memedImage)
+
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
     }
 
     func generateMemedImage() -> UIImage {
