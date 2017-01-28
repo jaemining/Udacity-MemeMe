@@ -39,13 +39,31 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! TableViewCell
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(TableViewController.openImageViewController))
 
         let meme = appDelegate.memes[indexPath.row]
         cell.tableImageView.image = meme.memedImage
         cell.tableTopTextField.text = meme.textFielTop
         cell.tableBottomTextField.text = meme.textFieldBottom
         
+        cell.tableImageView.addGestureRecognizer(tap)
+        cell.tableImageView.isUserInteractionEnabled = true
+        print("아무말대잔치")
+        
         return cell
+    }
+    
+    func openImageViewController() {
+        print("open image view controller")
+        //let imageViewController: UIViewController = ImageViewController()
+        
+        var storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        var imageViewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "ImageViewController") as UIViewController
+        
+        self.present(imageViewController, animated: true, completion: nil)
+        //present(imageViewController, animated: true, completion: nil)
     }
     
 
