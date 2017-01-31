@@ -14,7 +14,6 @@ class CollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
-    var currentRow: Int!
     var memes: [Meme]!
     var appDelegate: AppDelegate!
 
@@ -50,24 +49,19 @@ class CollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CollectionViewCell
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(CollectionViewController.openImageViewController))
-        
-        currentRow = indexPath.item
-
         let meme = memes[indexPath.item]
 
         cell.collectionImageView.image = meme.memedImage
         
-        cell.addGestureRecognizer(tap)
         cell.isUserInteractionEnabled = true
 
         return cell
     }
     
-    func openImageViewController() {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let imageViewController = self.storyboard?.instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
         
-        imageViewController.meme = memes[currentRow]
+        imageViewController.meme = memes[indexPath.row]
         
         present(imageViewController, animated: true, completion: nil)
     }

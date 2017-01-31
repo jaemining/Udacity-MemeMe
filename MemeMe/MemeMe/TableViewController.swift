@@ -12,8 +12,7 @@ class TableViewController: UITableViewController {
 
     var memes: [Meme]!
     var appDelegate: AppDelegate!
-    var currentRow: Int!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,25 +37,21 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! TableViewCell
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(TableViewController.openImageViewController))
-
-        currentRow = indexPath.row
-        
         let meme = appDelegate.memes[indexPath.row]
         cell.tableImageView.image = meme.memedImage
         cell.tableTopTextField.text = meme.textFielTop
         cell.tableBottomTextField.text = meme.textFieldBottom
         
-        cell.addGestureRecognizer(tap)
+        cell.tag = indexPath.row
         cell.isUserInteractionEnabled = true
         
         return cell
     }
     
-    func openImageViewController() {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let imageViewController = self.storyboard?.instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
         
-        imageViewController.meme = memes[currentRow]
+        imageViewController.meme = memes[indexPath.row]
         
         present(imageViewController, animated: true, completion: nil)
     }
