@@ -9,21 +9,16 @@
 import UIKit
 
 class ImageViewController: UIViewController {
-    
+
     @IBOutlet weak var imageView: UIImageView!
     var meme: Meme!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         imageView.image = meme.memedImage
     }
-    
-    @IBAction func close(_ sender: UIButton) {
+
+    @IBAction func close(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }

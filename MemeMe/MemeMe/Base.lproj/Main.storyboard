@@ -124,7 +124,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aEV-Uq-SMs" id="RHF-vS-eyI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="135.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView autoresizesSubviews="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ETj-66-adI">
@@ -197,26 +197,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFb-Qu-CCq">
-                                <rect key="frame" x="168.5" y="607" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
+                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFb-Qu-CCq">
+                                <rect key="frame" x="94" y="559" width="187" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="close:" destination="wtG-w3-Ncx" eventType="touchUpInside" id="T6T-fu-7Do"/>
+                                    <action selector="close:" destination="wtG-w3-Ncx" eventType="touchUpInside" id="HY6-hq-4jK"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2cA-Bf-ITU">
-                                <rect key="frame" x="16" y="64" width="343" height="422"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2cA-Bf-ITU">
+                                <rect key="frame" x="16" y="131" width="343" height="405"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="2cA-Bf-ITU" firstAttribute="leading" secondItem="43X-QX-JJN" secondAttribute="leadingMargin" id="AQW-6V-Yr3"/>
-                            <constraint firstItem="pFb-Qu-CCq" firstAttribute="centerX" secondItem="43X-QX-JJN" secondAttribute="centerX" id="EsX-5W-zkO"/>
-                            <constraint firstItem="aud-pf-wRO" firstAttribute="top" secondItem="pFb-Qu-CCq" secondAttribute="bottom" constant="30" id="H94-aE-G5T"/>
-                            <constraint firstItem="pFb-Qu-CCq" firstAttribute="top" secondItem="2cA-Bf-ITU" secondAttribute="bottom" constant="121" id="LLr-qD-vk5"/>
-                            <constraint firstItem="2cA-Bf-ITU" firstAttribute="top" secondItem="AtB-Gu-J85" secondAttribute="bottom" id="N97-L9-iMS"/>
-                            <constraint firstItem="2cA-Bf-ITU" firstAttribute="trailing" secondItem="43X-QX-JJN" secondAttribute="trailingMargin" id="XNJ-nH-lcH"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="LtM-Ie-xEt"/>
                     <connections>
